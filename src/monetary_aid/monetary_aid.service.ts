@@ -7,6 +7,11 @@ import { ResponseYearAgencies } from './interfaces/response-year-agencies.interf
 
 @Injectable()
 export class MonetaryAidService {
+  /**
+   * @author Sergio Peña
+   * @description Generate logic for servie response
+   *
+   */
   async getMonetaryAidByConutryAndRangeYear(year: number, codeCountry: string) {
     const responseYears = await this.getYearsByCountry(codeCountry);
     const years: string[] = responseYears.map((response) => response.year);
@@ -43,6 +48,11 @@ export class MonetaryAidService {
     return responseObj;
   }
 
+  /**
+   * @author Sergio Peña
+   * @description Consume external API for get years by country
+   *
+   */
   private async getYearsByCountry(codeCountry: string) {
     const response: ResponseYears[] = await axios
       .get(
@@ -57,6 +67,11 @@ export class MonetaryAidService {
     return response;
   }
 
+  /**
+   * @author Sergio Peña
+   * @description Consume external API for get agencies by country and year
+   *
+   */
   private async getAgeniesByYearAndCountry(year: number, codeCountry: string) {
     const response: any = await axios
       .get(
@@ -75,6 +90,11 @@ export class MonetaryAidService {
     return { year, responseSorted };
   }
 
+  /**
+   * @author Sergio Peña
+   * @description Replace dash(-) with spaces and string to upper case
+   *
+   */
   private agencyNameFormatter(agencyName: string): string {
     const regex = /\-/gi;
     const newName = agencyName.replace(regex, ' ').toUpperCase();
