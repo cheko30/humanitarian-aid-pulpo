@@ -1,12 +1,14 @@
 import { MonetaryAidController } from './monetary_aid.controller';
-import { MonetaryAidService } from './monetary_aid.service';
+import { MonetaryAidService } from './services/monetary_aid.service';
+import { ResponsibleAgenciesService } from './services/responsible-agencies.service';
 
 describe('MonetaryAidController', () => {
   let controller: MonetaryAidController;
   let service: MonetaryAidService;
+  let responsibleAgenciesService: ResponsibleAgenciesService;
 
   beforeEach(async () => {
-    service = new MonetaryAidService();
+    service = new MonetaryAidService(responsibleAgenciesService);
     controller = new MonetaryAidController(service);
   });
 

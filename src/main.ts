@@ -1,9 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { AppModule } from './app.module';
+import { MonetaryAidModule } from './monetary_aid/monetary_aid.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(MonetaryAidModule);
   const config = new DocumentBuilder()
     .setTitle('Humanitarian Aid Pulpo')
     .setDescription('API for Test Interview Pulpo')

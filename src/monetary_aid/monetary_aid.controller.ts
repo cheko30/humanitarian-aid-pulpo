@@ -1,6 +1,6 @@
 import { Controller, Get, Res, HttpStatus, Query } from '@nestjs/common';
 import { writeFile } from 'fs';
-import { MonetaryAidService } from './monetary_aid.service';
+import { MonetaryAidService } from './services/monetary_aid.service';
 
 @Controller('monetary-aid')
 export class MonetaryAidController {
